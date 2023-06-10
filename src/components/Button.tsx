@@ -1,4 +1,4 @@
-import React, { type DetailedHTMLProps } from "react";
+import { type DetailedHTMLProps } from "react";
 type ButtonProps = {
   small?: boolean;
   gray?: boolean;
