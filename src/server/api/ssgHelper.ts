@@ -7,6 +7,6 @@ export const ssgHelper = () => {
   return createServerSideHelpers({
     router: appRouter,
     transformer: SuperJSON,
-    ctx: createInnerTRPCContext({ session: null }),
+    ctx: createInnerTRPCContext({ session: null, revalidateSSG: null }),
   });
 };
