@@ -24,7 +24,7 @@ const Form = () => {
     updateTextAreaSize(textArea);
     textAreaRef.current = textArea;
   }, []);
-
+  const trpcUtils = api.useContext();
   useLayoutEffect(() => {
     updateTextAreaSize(textAreaRef.current);
   }, [inputValue]);
@@ -32,12 +32,43 @@ const Form = () => {
   const createTweet = api.tweet.create.useMutation({
     onSuccess: (newTweet) => {
       setInputValue("");
+
+      if (session.status !== "authenticated") return;
+
+      trpcUtils.tweet.infiniteFeed.setInfiniteData({}, (oldData) => {
+        if (oldData == null || oldData.pages[0] == null) return;
+        const newCacheTweet = {
+          ...newTweet,
+          likeCount: 0,
+          likedByMe: false,
+          user: {
+            id: session.data.user.id,
+            name: session.data.user.name || null,
+            image: session.data.user.image || null,
+          },
+        };
+
+        return {
+          ...oldData,
+          pages: [
+            {
+              ...oldData.pages[0],
+              tweets: [newCacheTweet, ...oldData.pages[0].tweets],
+            },
+            ...oldData.pages.slice(1),
+          ],
+        };
+      });
     },
   });
 
   const handleSubmit = (ev: FormEvent) => {
     ev.preventDefault();
-    createTweet.mutate({ content: inputValue });
+    if (!inputValue.trim())
+      return alert(
+        "Oops! It seems like you forgot to include a text in your Tweet."
+      );
+    createTweet.mutate({ content: inputValue.trim() });
   };
 
   if (session.status !== "authenticated") return null;
@@ -57,7 +88,9 @@ const Form = () => {
           placeholder="What is happening?"
         />
       </div>
-      <Button className="self-end">Tweet</Button>
+      <Button disabled={createTweet.isLoading} className="self-end">
+        Tweet
+      </Button>
     </form>
   );
 };
