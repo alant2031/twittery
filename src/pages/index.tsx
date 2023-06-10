@@ -4,7 +4,7 @@ import { Fragment, useState } from "react";
 import InfiniteTweetList from "~/components/InfiniteTweetList";
 import NewTweetForm from "~/components/NewTweetForm";
 import { api } from "~/utils/api";
-// TODO: Recent/Following Tabs JSX/Style [01:42:00]
+
 const RecentTweets = () => {
   const tweets = api.tweet.infiniteFeed.useInfiniteQuery(
     {},
