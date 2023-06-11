@@ -5,6 +5,7 @@ import { api } from "~/utils/api";
 import "~/styles/globals.css";
 import Head from "next/head";
 import SideNav from "~/components/SideNav";
+import Footer from "~/components/Footer";
 
 const MyApp: AppType<{ session: Session | null }> = ({
   Component,
@@ -26,6 +27,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
           <Component {...pageProps} />
         </div>
       </div>
+      <Footer />
     </SessionProvider>
   );
 };
