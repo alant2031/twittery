@@ -18,3 +18,8 @@ This is a simple Twitter clone built using the T3 stack. It allows users to post
 3. Type Safety: TypeScript brings type safety to the development process, catching errors at compile-time and reducing the likelihood of runtime errors. This helps improve code quality, maintainability, and collaboration within a team.
 4. Ecosystem and Tooling: By using Next.js and React, you gain access to a rich ecosystem of libraries, frameworks, and tooling. This makes it easier to find solutions, leverage community resources, and speed up development time.
 5. Full-Stack Typesafety: The T3 stack emphasizes full-stack type safety, meaning that both the frontend and backend code are written in TypeScript. This ensures consistent type checking and improves the overall stability and reliability of the application.
+
+
+## Live app
+
+[Check the app right here](https://twittery12.vercel.app/)
