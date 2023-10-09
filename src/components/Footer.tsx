@@ -8,7 +8,7 @@ const Footer = () => {
       </div>
       <a
         className="text-blue-800 hover:text-slate-800"
-        href="https://github.com/alant2031"
+        href="https://github.com/alant2031/twittery/"
         target="_blank"
       >
         <AiOutlineGithub className="h-6 w-6" />
