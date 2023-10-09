@@ -17,7 +17,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
         <title>Twittery</title>
         <meta
           name="description"
-          content="Twitter Clone made by Dev Alan Tanaka"
+          content="Twitter Clone made by Dev Alan T."
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
